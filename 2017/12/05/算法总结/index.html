@@ -239,7 +239,7 @@
 
     
         <meta property="article:published_time" content="Tue Dec 05 2017 15:52:47 GMT+0800">
-        <meta property="article:modified_time" content="Tue Dec 05 2017 15:54:09 GMT+0800">
+        <meta property="article:modified_time" content="Tue Dec 05 2017 16:00:24 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -262,7 +262,7 @@
     "mainEntityOfPage": "http://yoursite.com/2017/12/05/算法总结/index.html",
     "headline": "知识的海洋，代码的世界",
     "datePublished": "Tue Dec 05 2017 15:52:47 GMT+0800",
-    "dateModified": "Tue Dec 05 2017 15:54:09 GMT+0800",
+    "dateModified": "Tue Dec 05 2017 16:00:24 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "guoxiaoya",
@@ -608,32 +608,60 @@ Object.prototype.clone=function(){
 }
 </code></pre><p><strong>apply与call与bind</strong></p>
 <pre><code>//call:为某个方法添加具体的对象和参数
-</code></pre><p>//            var obj={num:2};<br>//            var addToThis=function(a){<br>//                return this.num+a;<br>//            }<br>//            console.log(addToThis(5));//NaN<br>//          console.log(addToThis.call(obj,3));//5<br>            /<em>call(),第一个参数是对象，第二个参数是参数</em>/<br>//         var obj={num:2};<br>//            var addToThis=function(a,b,c){<br>//                return this.num+a+b+c;<br>//            }<br>//            console.log(addToThis(5));//NaN<br>//          console.log(addToThis.call(obj,3,1,2));//8</p>
-<pre><code>//apply 为某个方法添加具体的对象和参数
-</code></pre><p>//<br>//         var obj={num:2};<br>//            var addToThis=function(a,b,c){<br>//                return this.num+a+b+c;<br>//            }<br>//            console.log(addToThis(5));//NaN<br>//          console.log(addToThis.apply(obj,[1,2,3]));//8<br>//<br>//          //bind<br>//          var obj1={nums:3};<br>//          var addTo=function(a,b,c){<br>//              return this.nums+a+b+c;<br>//          }<br>//          var bound=addTo.bind(obj1);//先把obj1添加到addTo这个方法中<br>//          console.log(bound(1,2,3));//9</p>
-<pre><code>//call()方法的使用
-var obj1={a:3};
-var add1=function(a1,a2,a3){
-    return this.a+a1+a2+a3;
-}
-console.log(add1.call(obj1,1,2,3));//9
+  //            var obj={num:2};
+  //            var addToThis=function(a){
+  //                return this.num+a;
+  //            }
+  //            console.log(addToThis(5));//NaN
+  //          console.log(addToThis.call(obj,3));//5
+              /*call(),第一个参数是对象，第二个参数是参数*/
+  //         var obj={num:2};
+  //            var addToThis=function(a,b,c){
+  //                return this.num+a+b+c;
+  //            }
+  //            console.log(addToThis(5));//NaN
+  //          console.log(addToThis.call(obj,3,1,2));//8
 
-//apply()方法的使用
-var obj2={b:3};
-var add2=function(b1,b2,b3){
-    return this.b+b1+b2+b3;
-}
-console.log(add2.apply(obj2,[1,2,3]));//9
+             //apply 为某个方法添加具体的对象和参数
+  //         
+  //         var obj={num:2};
+  //            var addToThis=function(a,b,c){
+  //                return this.num+a+b+c;
+  //            }
+  //            console.log(addToThis(5));//NaN
+  //          console.log(addToThis.apply(obj,[1,2,3]));//8
+  //          
+  //          //bind 
+  //          var obj1={nums:3};
+  //          var addTo=function(a,b,c){
+  //              return this.nums+a+b+c;
+  //          }
+  //          var bound=addTo.bind(obj1);//先把obj1添加到addTo这个方法中
+  //          console.log(bound(1,2,3));//9
 
-//bind()方法的使用
-var obj3={c:3};
-var add3=function(c1,c2,c3){
-    return this.c+c1+c2+c3;
-}
-var bound=add3.bind(obj3);//先把obj3添加到方法里
-console.log(bound(1,2,3));//9
+   //call()方法的使用
+   var obj1={a:3};
+   var add1=function(a1,a2,a3){
+      return this.a+a1+a2+a3;
+   }
+   console.log(add1.call(obj1,1,2,3));//9
+
+   //apply()方法的使用
+   var obj2={b:3};
+   var add2=function(b1,b2,b3){
+      return this.b+b1+b2+b3;
+   }
+   console.log(add2.apply(obj2,[1,2,3]));//9
+
+   //bind()方法的使用
+   var obj3={c:3};
+   var add3=function(c1,c2,c3){
+      return this.c+c1+c2+c3;
+   }
+   var bound=add3.bind(obj3);//先把obj3添加到方法里
+   console.log(bound(1,2,3));//9
 </code></pre><p><strong>100台阶问题</strong></p>
-<p>//有100格台阶，可以跨1步可以跨2步，那么一个有多少种走法<br>            function Step(){<br>                this.n1=1;<br>                this.n2=2;<br>                this.total=100;<br>                this.get=getfunction;<br>            }<br>            function getfunction(){<br>                for(var i=2;i&lt;this.total;i++){<br>                    var res=this.n1+this.n2;<br>                    this.n1=this.n2;<br>                    this.n2=res;<br>                }<br>                return res;<br>            }<br>            var str=new Step();<br>            var strs=str.get();<br>            alert(strs);<br><strong>验证邮箱</strong></p>
+<p>//有100格台阶，可以跨1步可以跨2步，那么一个有多少种走法<br>                function Step(){<br>                    this.n1=1;<br>                    this.n2=2;<br>                    this.total=100;<br>                    this.get=getfunction;<br>                }<br>                function getfunction(){<br>                    for(var i=2;i&lt;this.total;i++){<br>                        var res=this.n1+this.n2;<br>                        this.n1=this.n2;<br>                        this.n2=res;<br>                    }<br>                    return res;<br>                }<br>                var str=new Step();<br>                var strs=str.get();<br>                alert(strs);<br><strong>验证邮箱</strong></p>
 <pre><code>&lt;form action=&quot;&quot; name=&quot;mydata&quot; onsubmit=&quot;return emailCheck(this)&quot;&gt;
     Email Address:
     &lt;input type=&quot;text&quot; name=&quot;myemail&quot;&gt;&lt;br /&gt;
@@ -654,8 +682,14 @@ console.log(bound(1,2,3));//9
         }
     }
 </code></pre><p><strong>异常处理问题</strong></p>
-<p>   <form action=""><br>            <label for="email">Email:</label><br><br>            <input type="email" name="email" id="email" value=""><br><br>        </form><br>        <button class="btn" onclick="emailCheck()">提交</button><br>        <div id="console"></div></p>
-<pre><code>&lt;/div&gt;
+<pre><code>&lt;form action=&quot;&quot;&gt;
+    &lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;&lt;br /&gt;
+    &lt;input type=&quot;email&quot; name=&quot;email&quot; id=&quot;email&quot; value=&quot;&quot; /&gt;&lt;br /&gt;
+&lt;/form&gt;
+&lt;button class=&quot;btn&quot; onclick=&quot;emailCheck()&quot;&gt;提交&lt;/button&gt;
+&lt;div id=&quot;console&quot;&gt;
+
+&lt;/div&gt;
 &lt;script&gt;
     function emailCheck(){
         try{

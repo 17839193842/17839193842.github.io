@@ -12,19 +12,21 @@ $ cd 文件夹名   //进入项目文件夹
 $ git pull    //更新项目代码  
 ```
    若出现Your local changes to the fllowing files would be overwriteen by merge: 
+   
 ``` bash
 Your local changes to the fllowing files would be overwriteen by merge: 
 ``` 
    则需要下面步骤；
-        1, git stash    //退回上次提交的版本
+     1 git stash    //退回上次提交的版本
+	  
 ``` bash
 $ git stash    //退回上次提交的版本  
 ```
-		2, git pull     //重新一次更新项目代码
+		2 git pull     //重新一次更新项目代码
 ``` bash
 $ git pull   //更新代码 
 ```
-		3, git stash pop    //把本地原始修改的代码添加上   注意:出现绿色的代表添加上的   出现红色的代表冲突文件  解决办法；找到对应文件  用"===="或者">>>>"查找冲突地方  解决冲突
+		3， git stash pop    //把本地原始修改的代码添加上   注意:出现绿色的代表添加上的   出现红色的代表冲突文件  解决办法；找到对应文件  用"===="或者">>>>"查找冲突地方  解决冲突
 ``` bash
 $ git stash pop   //把本地原始修改的代码添加上
 ```
